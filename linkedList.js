@@ -146,6 +146,20 @@ export default function linkedList() {
     return string;
   };
 
+  const insertAt = (value, index) => {
+    // to check if the entered index is larger than the list size
+    if (size() < index) {
+      return "The list is not that long";
+      // if the index is 0 we use the function we have (prepend) to add the value to the head
+    } else if (index === 0) {
+      prepend(value);
+    } else {
+      // we use at(index-1) to point to the node before the node we want to insert so we can edit the .next in it
+      let pointer = at(index - 1);
+      pointer.next = node(value, pointer.next);
+    }
+  };
+
   return {
     head,
     tail,
@@ -157,6 +171,7 @@ export default function linkedList() {
     contains,
     find,
     toString,
+    insertAt,
   };
 }
 
