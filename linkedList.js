@@ -111,6 +111,24 @@ export default function linkedList() {
     } else return false;
   };
 
+  const find = (value) => {
+    let pointer = head();
+    let index = 0;
+    // to loop over the list
+    while (pointer.next !== null) {
+      // to return the index of the node if it's == value
+      if (pointer.value === value) {
+        return index;
+      }
+      pointer = pointer.next;
+      index += 1;
+    }
+    // to check the last value because the loop stops before checking it
+    if (pointer.value === value) {
+      return index;
+    } else return null;
+  };
+
   return {
     head,
     tail,
@@ -120,6 +138,7 @@ export default function linkedList() {
     at,
     pop,
     contains,
+    find,
   };
 }
 
