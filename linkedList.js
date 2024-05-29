@@ -96,6 +96,21 @@ export default function linkedList() {
     }
   };
 
+  const contains = (value) => {
+    let pointer = head();
+    // loop through the list until we find the value we want and return true
+    while (pointer.next !== null) {
+      if (pointer.value === value) {
+        return true;
+      }
+      pointer = pointer.next;
+    }
+    // to check the last value because the while loop stops before checking it
+    if (pointer.value === value) {
+      return true;
+    } else return false;
+  };
+
   return {
     head,
     tail,
@@ -103,7 +118,8 @@ export default function linkedList() {
     prepend,
     size,
     at,
-    pop
+    pop,
+    contains,
   };
 }
 
