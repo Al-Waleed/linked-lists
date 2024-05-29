@@ -9,8 +9,17 @@ export default function linkedList() {
     return list.head;
   };
 
+  const tail = () => {
+    let pointer = head();
+    while (pointer.next !== null) {
+      pointer = pointer.next;
+    }
+    return pointer;
+  };
+
   return {
     head,
+    tail,
   };
 }
 
