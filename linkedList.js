@@ -57,12 +57,32 @@ export default function linkedList() {
     }
   };
 
+  const at = (index) => {
+    let pointer = head();
+    let counter = 0;
+    // to return the first item on the list in case index = 0
+    if (counter === index) {
+      return pointer;
+      // to check if the entered number is larger than the list's length
+    } else if (index > size()) {
+      return "the list is not that long";
+    } else {
+      // keep going to the next pointer and adding 1 to the counter until it matches the index number
+      while (counter < index) {
+        pointer = pointer.next;
+        counter += 1;
+      }
+      return pointer;
+    }
+  };
+
   return {
     head,
     tail,
     append,
     prepend,
     size,
+    at,
   };
 }
 
