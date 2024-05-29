@@ -28,10 +28,15 @@ export default function linkedList() {
       while (pointer.next !== null) {
         pointer = pointer.next;
       }
-      if (pointer.next === null) {//!!i think this if isn't necessary ill get back to it later
+      if (pointer.next === null) {
+        //!!i think this if isn't necessary ill get back to it later
         pointer.next = node(value);
       }
     }
+  };
+
+  const prepend = (value) => {
+    list.head = node(value, list.head);
   };
 
   return {
