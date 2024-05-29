@@ -39,10 +39,30 @@ export default function linkedList() {
     list.head = node(value, list.head);
   };
 
+  const size = () => {
+    let pointer = list.head;
+    let total = 0;
+    // in case the pointer(head) is empty return 0
+    if (pointer === null) {
+      return total;
+    } else {
+      // add 1 to the total before the while loop because in the loop it stops adding to the total before reaching the last value
+      total += 1;
+      while (pointer.next !== null) {
+        console.log;
+        pointer = pointer.next;
+        total += 1;
+      }
+      return total;
+    }
+  };
+
   return {
     head,
     tail,
     append,
+    prepend,
+    size,
   };
 }
 
