@@ -129,6 +129,23 @@ export default function linkedList() {
     } else return null;
   };
 
+  const toString = () => {
+    let string = "";
+    let pointer = head();
+    // to check if the list is empty
+    if (pointer === null) {
+      return "The list is empty";
+    }
+    // keep going to the next item and add the value to string
+    while (pointer.next !== null) {
+      string += `(${pointer.value}) -> `;
+      pointer = pointer.next;
+    }
+    // to add the last item to string because the loop stops before reaching it
+    string += `(${pointer.value}) -> null`;
+    return string;
+  };
+
   return {
     head,
     tail,
@@ -139,6 +156,7 @@ export default function linkedList() {
     pop,
     contains,
     find,
+    toString,
   };
 }
 
