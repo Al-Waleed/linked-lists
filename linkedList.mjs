@@ -160,6 +160,25 @@ export default function linkedList() {
     }
   };
 
+  const removeAt = (index) => {
+    // to check if the specified index is larger than the length of the list
+    if (size() <= index) {
+      return "The list is not that long";
+      //to check if the specified index refers to the last item then we use pop() to remove it
+    } else if (index === size() - 1) {
+      pop();
+      // if the first node is specified we remove it by adding a node() function with the value and the .next of the node after it
+    } else if (index === 0) {
+      list.head = node(list.head.next.value, list.head.next.next);
+    } else {
+      // we use at(index-1) to get the node before the one we want to remove
+      let pointer = at(index - 1);
+      //pointer.next.next.value refers to the value of the node after the one we want to remove
+      //pointer.next.next.next refers to the (.next) of the node after the one we want to remove
+      pointer.next = node(pointer.next.next.value, pointer.next.next.next);
+    }
+  };
+
   return {
     head,
     tail,
@@ -172,6 +191,7 @@ export default function linkedList() {
     find,
     toString,
     insertAt,
+    removeAt,
   };
 }
 
