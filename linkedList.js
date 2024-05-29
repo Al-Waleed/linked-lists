@@ -76,6 +76,26 @@ export default function linkedList() {
     }
   };
 
+  const pop = () => {
+    let pointer = head();
+    // to check if the list is empty or not
+    if (pointer === null) {
+      return "The list is already empty";
+      // to check if the list only has 1 item
+    } else if (pointer.next === null) {
+      list.head = null;
+      // keep pointing to the next pointer until we reach the one before the last so we can delete the next item which is the last
+    } else {
+      while (pointer.next.next !== null) {
+        pointer = pointer.next;
+      }
+      if (pointer.next.next === null) {
+        // at this point pointer refers to the node second to last -- and pointer.next refers to the last item
+        pointer.next = null;
+      }
+    }
+  };
+
   return {
     head,
     tail,
@@ -83,6 +103,7 @@ export default function linkedList() {
     prepend,
     size,
     at,
+    pop
   };
 }
 
